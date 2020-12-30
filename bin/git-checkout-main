@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+git fetch --prune
+
+has_main="$(git ls-remote --heads origin main)"
+if [ -n "${has_main}" ]; then
+    git checkout main
+else
+    git checkout master
+fi
+
+git pull --autostash

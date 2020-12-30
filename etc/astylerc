@@ -1,0 +1,23 @@
+# one true brace style
+-A10
+
+--indent=spaces=4
+
+# extra newline before and after blocks (except else/catch/finally)
+--break-blocks
+
+# add whitespace after if/for, etc...
+--pad-header
+
+# strip out other wacky whitespace for if/for, etc...
+--unpad-paren
+
+# one-line ifs are evil
+--add-brackets
+
+# keep * and & with the type
+--align-pointer=type
+--align-reference=type
+
+# purge the original file
+-n

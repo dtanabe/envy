@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PROMPTCOLOR="${PROMPTCOLOR:-0}"
+
+short_root=${PWD#$REPOS_ROOT/}
+
+prompt_color="\[\e[${PROMPTCOLOR};7m\]"
+reset="\[\e[0m\]"
+gray="\[\e[37m\]"
+green="\[\e[32m\]"
+
+
+# compute current version control system info for the working directory
+function __vcsinfo {
+  local git_branch
+
+  git_branch="$(__git_current_branch)"
+  case "${git_branch}" in
+    "") echo -n "";;
+    "main") echo -n "${gray}[main]${reset}";;
+    "master") echo -n "${gray}[master]${reset}";;
+    *) echo -n "${green}[${git_branch}]${reset}";;
+  esac
+}
+
+
+function __git_current_branch {
+  local ref
+  ref="$(git symbolic-ref HEAD 2> /dev/null)" || return
+  echo "${ref#refs/heads/}"
+}
+
+
+echo -e "${prompt_color}\\!${reset}:$(__vcsinfo)${short_root}${reset}\\$ "

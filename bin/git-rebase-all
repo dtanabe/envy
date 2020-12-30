@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+git fetch --prune
+
+if [ -n "$(git ls-remote --heads origin main)" ]; then 
+    main_branch="main"
+else
+    main_branch="master"
+fi
+
+git checkout "${main_branch}" && git pull
+
+branches=$(git branch --format='%(refname:short)' | sort)
+for branch in $branches; do
+    if [ "${branch}" != "${main_branch}" ]
+    then
+        echo "Analyzing $branch..."
+        git checkout "${branch}"
+        if (git rebase "${main_branch}"); then
+            echo "Rebased: $branch"
+        else
+            echo "FAILED to rebase: $branch"
+            git rebase --abort
+        fi
+    fi
+done
+
+git checkout "${main_branch}"

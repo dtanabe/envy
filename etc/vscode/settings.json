@@ -1,0 +1,110 @@
+{
+  "editor.fontFamily": "Input Mono Condensed",
+  "editor.fontSize": 12,
+  "editor.mouseWheelZoom": true,
+  "editor.renderIndentGuides": true,
+  "editor.rulers": [
+    80,
+    100,
+    120
+  ],
+  "editor.showFoldingControls": "always",
+  "explorer.openEditors.visible": 0,
+  "files.autoSave": "onFocusChange",
+  "files.associations": {
+    "*.bats": "shellscript",
+    "*.vim": "vimrc"
+  },
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/._*": true,
+    "**/.*.sw?": true,
+    "**/.buckd": true,
+    "**/.classpath": true,
+    "**/.daml": true,
+    "**/.factorypath": true,
+    "**/.idea": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.stack-work": true,
+    "**/*.iml": true,
+    "**/*.pyc": true,
+    "**/buck-out": true,
+    "**/build": true,
+    "**/target": true,
+    "**/venv": true,
+    "distribution-work": true
+  },
+  "search.exclude": {
+    "**/.idea": true,
+    "**/.stack-work": true,
+    "**/*.iml": true,
+    "**/.*.sw?": true,
+    "**/._*": true,
+    "**/node_modules": true,
+    "**/bower_components": true
+  },
+  "files.insertFinalNewline": true,
+  "gitlens.keymap": "chorded",
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false,
+    "suppressResultsExplorerNotice": false,
+    "suppressShowKeyBindingsNotice": true
+  },
+  "gitlens.historyExplorer.enabled": true,
+  "java.errors.incompleteClasspath.severity": "ignore",
+  "python.linting.pylintPath": "/usr/local/bin/pylint",
+  "search.quickOpen.includeSymbols": true,
+  "vim.enableNeovim": true,
+  "vim.disableAnnoyingNeovimMessage": true,
+  "vim.hlsearch": true,
+  "vim.statusBarColorControl": true,
+  "vim.useCtrlKeys": true,
+  "window.reopenFolders": "all",
+  "window.restoreFullscreen": true,
+  "window.title": "[${rootName}] ${activeEditorMedium}",
+  "window.zoomLevel": 0,
+  "workbench.editor.revealIfOpen": true,
+  "workbench.startupEditor": "none",
+  "rust.mode": null,
+  "rust.rustup": {
+    "toolchain": "stable-x86_64-apple-darwin",
+    "nightlyToolchain": "nightly-x86_64-apple-darwin"
+  },
+  "rust.rls": {
+    "useRustfmt": true
+  },
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#005f5f",
+    "statusBar.noFolderBackground": "#005f5f",
+    "statusBar.debuggingBackground": "#005f5f"
+  },
+  "vim.neovimPath": "/usr/local/bin/nvim",
+  "python.jediEnabled": false,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.tree.indent": 20,
+  "workbench.tree.renderIndentGuides": "always",
+  "python.defaultInterpreterPath": "/usr/local/bin/python3",
+  "python.languageServer": "Pylance",
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "files.watcherExclude": {
+    "**/.bloop": true,
+    "**/.metals": true,
+    "**/.ammonite": true
+  },
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-11",
+      "path": "/Library/Java/JavaVirtualMachines/jdk-11.0.5.jdk/Contents/Home",
+      "sources": " /Library/Java/JavaVirtualMachines/jdk-11.0.5.jdk/Contents/Home/lib/src.zip",
+      "default": true
+    }
+  ],
+  "extensions.ignoreRecommendations": false
+}

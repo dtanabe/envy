@@ -1,0 +1,6 @@
+[
+  { "key": "cmd+o",               "command": "workbench.action.quickOpen" },
+  { "key": "cmd+shift+[",         "command": "workbench.action.previousEditor" },
+  { "key": "cmd+shift+]",         "command": "workbench.action.nextEditor" },
+  { "key": "cmd+alt+w",           "command": "workbench.action.closeAllEditors" }
+]

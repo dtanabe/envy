@@ -1,0 +1,5 @@
+[
+  { "keys": ["super+o"], "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} },
+  { "keys": ["super+shift+o"], "command": "prompt_open" },
+  { "keys": ["super+alt+w"], "command": "close_all" }
+]

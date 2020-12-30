@@ -1,0 +1,24 @@
+$programming-font-family:       "Source Code Pro", "Menlo", monospace;
+$programming-font-size:         14px;
+$programming-color:             #f1f1f1;
+$programming-background-opacity: 0.85;
+$programming-background-color:  rgba(0%, 0%, 0%, $programming-background-opacity);
+
+// Terminal Settings
+$terminal-font-family:          $programming-font-family;
+$terminal-font-size:            $programming-font-size;
+$terminal-color:                $programming-color;
+$terminal-background-opacity:   $programming-background-opacity;
+$terminal-background-color:     $programming-background-color;
+
+// Generic Syntax 
+$syntax-font-family:            $programming-font-family;
+$syntax-font-size:              $programming-font-size;
+$syntax-background-opacity:     $programming-background-opacity;
+$syntax-background-color:       $programming-background-color;
+$syntax-keyword-color:          #f9ee98;
+$syntax-comments-color:         #7c7c7c;
+$syntax-symbol-color:           #eeeeee;
+$syntax-tag-color:              #96cbfe;
+$syntax-tag-attr-name-color:    #ffd2a7;
+$syntax-tag-attr-value-color:   #a8ff60;

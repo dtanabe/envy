@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: pb-envy
+
+      - name: Install ShellSpec
+        run: |
+          curl -sSL https://git.io/shellspec > install-shellspec.sh
+          chmod 755 install-shellspec.sh
+          sudo ./install-shellspec.sh -y --prefix /usr/local
+
+      - name: Run Tests
+        working-directory: pb-envy
+        run: |
+          export REPOS_ROOT="${GITHUB_WORKSPACE}"
+          echo "REPOS_ROOT set to ${REPOS_ROOT}"
+          make test

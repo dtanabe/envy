@@ -1,0 +1,13 @@
+[
+  { "key": "ctrl+o",              "command": "workbench.action.quickOpen" },
+  { "key": "ctrl+shift+[",        "command": "workbench.action.previousEditor" },
+  { "key": "ctrl+shift+]",        "command": "workbench.action.nextEditor" },
+  {
+    "key": "ctrl+shift+w",
+    "command": "workbench.action.closeAllEditors"
+  },
+  {
+    "key": "ctrl+shift+,",
+    "command": "workbench.action.openGlobalKeybindingsFile"
+  }
+]

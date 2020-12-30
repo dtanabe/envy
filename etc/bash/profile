@@ -1,0 +1,17 @@
+# shellcheck shell=bash
+# shellcheck disable=SC1090
+# SC1090: Ignored because we're intentionally sourcing arbitrary paths
+
+if [ -z "${ENVY_ROOT}" ]; then
+    ENVY_ROOT="$(dirname "$(dirname "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)")")"
+    export ENVY_ROOT
+fi
+
+if ! cmp -s "${ENVY_ROOT}/etc/bash/profile" "${BASH_SOURCE[0]}"; then
+    echo "ERROR: Not sure where etc/bash/profile is, so bailing!"
+    exit 1
+fi
+
+for rcfile in "${ENVY_ROOT}"/etc/bash/profile.d/*.sh; do
+    . "${rcfile}"
+done

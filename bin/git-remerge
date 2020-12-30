@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# "Rebases" a merge commit.
+#
+# git-merge <base-branch> <other-branch>
+
+hash="$(git rev-parse HEAD)"
+base_branch=$1
+other_branch=$2
+
+git reset --hard "${base_branch}"
+git merge --no-commit "${other_branch}"
+git clean -f -d
+git ls-files | tr '\n' '\0' | xargs -0 -I{} rm "{}"
+git checkout "${hash}" -- .
+git add -A .

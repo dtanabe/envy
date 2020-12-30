@@ -1,0 +1,15 @@
+{
+	"color_scheme": "Packages/User/DKT.tmTheme",
+	"ensure_newline_at_eof_on_save": true,
+	"find_selected_text": false,
+	"font_size": 14,
+	"ignored_packages":
+	[
+	],
+	"show_encoding": true,
+	"show_line_endings": true,
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"vintage_start_in_command_mode": true
+}

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]
+then
+    echo "usage: $0 [app names ...]"
+fi
+
+for APP in "$@"
+do
+    osascript \
+        -e "tell application \"System Events\"" \
+        -e "    if (name of processes) contains \"$APP\" then" \
+        -e "        tell application \"$APP\" to quit" \
+        -e "    else" \
+        -e "        \"\\\"$APP\\\" is not running\"" \
+        -e "    end if" \
+        -e "end tell" 1>&2
+done

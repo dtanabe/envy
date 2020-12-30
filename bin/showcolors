@@ -1,0 +1,16 @@
+#!/bin/sh
+
+esc="\033["
+
+echo "______40______41______42______43______44______45______46______47___"
+for FOREGROUND in 30 31 32 33 34 35 36 37
+do
+    line1="$FOREGROUND "
+    line2="   "
+    for BACKGROUND in 40 41 42 43 44 45 46 47
+    do
+        line1="${line1}${esc}${BACKGROUND};${FOREGROUND}m Normal ${esc}0m"
+        line2="${line2}${esc}${BACKGROUND};${FOREGROUND};1m  Bold  ${esc}0m"
+    done
+    printf "%s\n%s" "$line1" "$line2"
+done
