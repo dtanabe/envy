@@ -22,6 +22,10 @@ alias    ll='ls -l'
 alias   lla='ls -lA'
 alias    la='ls -A'
 
+alias k='kubectl'
+alias kw='kubewatch'
+alias kuebctl='kubectl'
+
 # Git aliases.
 alias gco='git checkout'
 alias gco-='git checkout -'

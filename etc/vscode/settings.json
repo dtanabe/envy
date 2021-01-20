@@ -80,9 +80,9 @@
     "useRustfmt": true
   },
   "workbench.colorCustomizations": {
-    "statusBar.background": "#5f0000",
-    "statusBar.noFolderBackground": "#5f0000",
-    "statusBar.debuggingBackground": "#5f0000"
+    "statusBar.background": "#005f5f",
+    "statusBar.noFolderBackground": "#005f5f",
+    "statusBar.debuggingBackground": "#005f5f"
   },
   "vim.neovimPath": "/usr/local/bin/nvim",
   "python.jediEnabled": false,
