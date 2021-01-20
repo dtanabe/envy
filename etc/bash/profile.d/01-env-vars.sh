@@ -8,8 +8,12 @@ export EDITOR=vim
 export PAGER=less
 export LESS=-R
 
-export GREP_OPTIONS='--color=auto'
-export GREP_COLOR='1;32'
+# BSD grep doesn't have good grep defaults;
+# GNU grep's defaults are better, but it whines if you set these environment variables
+if ! grep --version 2>/dev/null | grep -q 2>/dev/null GNU; then
+    export GREP_OPTIONS='--color=auto'
+    export GREP_COLOR='1;32'
+fi
 
 export HISTFILESIZE=5000
 export HISTSIZE=5000

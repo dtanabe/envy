@@ -49,7 +49,7 @@ function _configure() {
 
     # For each repo, create a quick keyboard shortcut to allow jumping there.
     if [ -n "${REPOS_ROOT}" ]; then
-        if find . -regextype grep -regex "\0" >/dev/null 2>&1; then
+        if find . -regextype grep -regex "\0" -maxdepth 1 >/dev/null 2>&1; then
             find_opts="-regextype grep"
         fi
 

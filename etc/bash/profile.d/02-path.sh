@@ -10,6 +10,7 @@ function _configure() {
         "${HOME}/.daml/bin"
         "${HOME}/.local/bin"
         "${HOME}/.poetry/bin"
+        "${HOME}/.pyenv/bin"
         "${HOME}/.pyenv/shims"
         "${HOME}/.apps/.venv/bin"
         /usr/local/opt/gettext/bin
@@ -19,6 +20,7 @@ function _configure() {
         /bin
         /usr/sbin
         /sbin
+        /snap/bin
         /opt/local/bin
         /opt/local/sbin
         /Applications/MacVim.app/Contents/bin
