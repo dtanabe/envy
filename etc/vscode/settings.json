@@ -13,7 +13,8 @@
   "files.autoSave": "onFocusChange",
   "files.associations": {
     "*.bats": "shellscript",
-    "*.vim": "vimrc"
+    "*.vim": "vimrc",
+    "*.toml": "toml"
   },
   "files.exclude": {
     "**/__pycache__": true,
@@ -80,9 +81,9 @@
     "useRustfmt": true
   },
   "workbench.colorCustomizations": {
-    "statusBar.background": "#005f5f",
-    "statusBar.noFolderBackground": "#005f5f",
-    "statusBar.debuggingBackground": "#005f5f"
+    "statusBar.background": "#5f00af",
+    "statusBar.noFolderBackground": "#5f00af",
+    "statusBar.debuggingBackground": "#5f00af"
   },
   "vim.neovimPath": "/usr/local/bin/nvim",
   "python.jediEnabled": false,
@@ -106,5 +107,19 @@
       "default": true
     }
   ],
-  "extensions.ignoreRecommendations": false
+  "extensions.ignoreRecommendations": false,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "go.toolsManagement.autoUpdate": true,
+  "editor.tabSize": 8,
+  "editor.cursorStyle": "line",
+  "editor.insertSpaces": false,
+  "editor.lineNumbers": "on",
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "editor.wordWrap": "off",
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  }
 }

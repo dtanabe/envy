@@ -12,6 +12,8 @@
 	prompt = false
 [diff]
 	tool = Kaleidoscope
+	colorMoved = default
+	colorMovedWS = allow-indentation-change
 
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot

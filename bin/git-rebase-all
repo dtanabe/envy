@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+BOLD="\033[97;1m"
+NC="\033[0m"
+
 git fetch --prune
 
 if [ -n "$(git ls-remote --heads origin main)" ]; then 
@@ -11,11 +14,14 @@ fi
 
 git checkout "${main_branch}" && git pull
 
+head_commit="$(git rev-parse HEAD)"
+deletable_branches=""
+
 branches=$(git branch --format='%(refname:short)' | sort)
 for branch in $branches; do
     if [ "${branch}" != "${main_branch}" ]
     then
-        echo "Analyzing $branch..."
+        echo -e "${BOLD}Analyzing $branch...${NC}"
         git checkout "${branch}"
         if (git rebase "${main_branch}"); then
             echo "Rebased: $branch"
@@ -23,7 +29,19 @@ for branch in $branches; do
             echo "FAILED to rebase: $branch"
             git rebase --abort
         fi
+
+        cur_commit="$(git rev-parse HEAD)"
+        if [ "${head_commit}" == "${cur_commit}" ]
+        then
+            echo "Branch ${branch} can be deleted."
+            deletable_branches="${deletable_branches} ${branch}"
+        fi
+        echo
     fi
 done
 
 git checkout "${main_branch}"
+
+echo "Summary:"
+echo " * Deletable branches:"
+echo "    ${deletable_branches}"
