@@ -1,0 +1,3 @@
+[submodule "etc/vim/pack/dtanabe/start/vim-jsonnet"]
+	path = etc/vim/pack/dtanabe/start/vim-jsonnet
+	url = https://github.com/google/vim-jsonnet

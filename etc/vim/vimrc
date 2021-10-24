@@ -17,8 +17,8 @@ highlight ColorColumn ctermbg=DarkGray guibg=DarkGray
 
 " vim variants
 if has("mac")
-    set guifont=InputMonoCondensed-Regular:h13
+    set guifont=InputMonoCondensed-Regular:h15
 endif
 if has("transparency")
-    set transparency=20
+    set transparency=5
 endif
