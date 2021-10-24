@@ -25,6 +25,8 @@ alias    la='ls -A'
 alias k='kubectl'
 alias kw='kubewatch'
 alias kuebctl='kubectl'
+alias kgp='kubectl get pods'
+alias kwgp='watch -t "kubectl get pods"'
 
 # Git aliases.
 alias gco='git checkout'

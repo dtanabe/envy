@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+exit_code="${1:-}"
 PROMPTCOLOR="${PROMPTCOLOR:-0}"
 
 short_root=${PWD#$REPOS_ROOT/}
@@ -9,6 +10,7 @@ prompt_color="\[\e[${PROMPTCOLOR};7m\]"
 reset="\[\e[0m\]"
 gray="\[\e[37m\]"
 green="\[\e[32m\]"
+blink="\[\e[5m\]"
 
 
 # compute current version control system info for the working directory
@@ -31,5 +33,14 @@ function __git_current_branch {
   echo "${ref#refs/heads/}"
 }
 
+time_str="$(date +"%H%M%S")"
+clock="${time_str:0:2}${blink}:${reset}${time_str:2:2}${blink}:${reset}${time_str:4:2}"
 
-echo -e "${prompt_color}\\!${reset}:$(__vcsinfo)${short_root}${reset}\\$ "
+if [ "${exit_code}" == "0" ]; then
+  _code="\[\e[47m\]   0 ${reset}"
+else
+  _code="\[\e[41m\] $(printf '% 3s' "${exit_code}") ${reset}"
+fi
+_path="📁 ${short_root}"
+
+echo -e "${_code} ${clock}${reset} ${prompt_color}\\!${reset}:$(__vcsinfo) ${_path}${reset}\n\\$ "

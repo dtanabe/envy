@@ -11,6 +11,9 @@ function _configure() {
     for src in "${sources[@]}"; do
         [ -f "${src}" ] && . "${src}"
     done
+
+    # This is unfortunately simply too slow
+    #type kubectl >/dev/null && source <(kubectl completion bash)
 }
 _configure
 unset -f _configure
