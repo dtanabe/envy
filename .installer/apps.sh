@@ -6,6 +6,7 @@ cache_dir="${root_dir}/.cache"
 cache_apps_dir="${cache_dir}/apps"
 hammerspoon_app_zip="${cache_apps_dir}/hammerspoon.zip"
 
+# Hammerspoon
 defaults write org.hammerspoon.Hammerspoon MJConfigFile "${root_dir}/etc/hammerspoon/init.lua"
 
 # Check if Hammerspoon is installed.
@@ -29,3 +30,7 @@ if [ ! -d /Applications/Hammerspoon.app ] ; then
     unzip "${hammerspoon_app_zip}" -d "${cache_apps_dir}"
     mv "${cache_apps_dir}/Hammerspoon.app" /Applications
 fi
+
+# iTerm
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${root_dir}/etc/iterm2/settings.plist"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
