@@ -128,5 +128,11 @@
       "source.organizeImports": true,
     }
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "Lua.diagnostics.globals": [
+    "hs"
+  ],
+  "Lua.workspace.library": [
+    "/Applications/Hammerspoon.app/Contents/Resources/extensions"
+  ]
 }
