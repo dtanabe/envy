@@ -50,6 +50,10 @@ hs.hotkey.bind({"ctrl", "alt"}, "TAB", function()
   hs.application.launchOrFocus("iTerm")
 end)
 
+hs.hotkey.bind({"ctrl", "alt"}, "P", function()
+  hs.execute("/usr/local/bin/code " .. os.getenv("HOME") .. "/Repositories/pb-envy")
+end)
+
 hs.hotkey.bind({"ctrl", "alt"}, "return", function()
   local win = hs.window.focusedWindow()
   local rect = wideMonitor():frame()
