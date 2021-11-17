@@ -76,6 +76,68 @@ hs.hotkey.bind({"ctrl", "alt"}, "right", function()
   win:setFrame(rect, 0)
 end)
 
+hs.hotkey.bind({"ctrl", "alt"}, "I", function()
+  local win = hs.window.focusedWindow()
+  local rect = wideMonitor():frame()
+  local halfWidth = rect.w / 2
+  local halfHeight = rect.h / 2
+  rect.w = halfWidth
+  rect.h = halfHeight
+  win:setFrame(rect, 0)
+end)
+
+hs.hotkey.bind({"ctrl", "alt"}, "O", function()
+  local win = hs.window.focusedWindow()
+  local rect = wideMonitor():frame()
+  local halfWidth = rect.w / 2
+  local halfHeight = rect.h / 2
+  rect.x = halfWidth
+  rect.w = halfWidth
+  rect.h = halfHeight
+  win:setFrame(rect, 0)
+end)
+
+hs.hotkey.bind({"ctrl", "alt"}, "K", function()
+  local win = hs.window.focusedWindow()
+  local rect = wideMonitor():frame()
+  local halfWidth = rect.w / 2
+  local halfHeight = rect.h / 2
+  rect.y = halfHeight
+  rect.w = halfWidth
+  rect.h = halfHeight
+  win:setFrame(rect, 0)
+end)
+
+hs.hotkey.bind({"ctrl", "alt"}, "L", function()
+  local win = hs.window.focusedWindow()
+  local rect = wideMonitor():frame()
+  local halfWidth = rect.w / 2
+  local halfHeight = rect.h / 2
+  rect.x = halfWidth
+  rect.y = halfHeight
+  rect.w = halfWidth
+  rect.h = halfHeight
+  win:setFrame(rect, 0)
+end)
+
+hs.hotkey.bind({"ctrl", "alt"}, "[", function()
+  local win = hs.window.focusedWindow()
+  local rect = wideMonitor():frame()
+  local twoThirdsWidth = rect.w * 2 / 3
+  rect.w = twoThirdsWidth
+  win:setFrame(rect, 0)
+end)
+
+hs.hotkey.bind({"ctrl", "alt"}, "]", function()
+  local win = hs.window.focusedWindow()
+  local rect = wideMonitor():frame()
+  local oneThirdsWidth = rect.w / 3
+  local twoThirdsWidth = rect.w * 2 / 3
+  rect.x = rect.x + oneThirdsWidth
+  rect.w = twoThirdsWidth
+  win:setFrame(rect, 0)
+end)
+
 hs.hotkey.bind({"ctrl", "alt"}, "up", function()
   local win = hs.window.focusedWindow()
   local rect = wideMonitor():frame()
@@ -122,5 +184,24 @@ hs.hotkey.bind({"ctrl", "alt"}, "pad2", function()
   local thirdHeight = rect.h / 3
   rect.y = rect.y + thirdHeight * 2
   rect.h = thirdHeight
+  win:setFrame(rect, 0)
+end)
+
+hs.hotkey.bind({"ctrl", "alt"}, "pad6", function()
+  local win = hs.window.focusedWindow()
+  local rect = tallMonitor():frame()
+  local oneThirdHeight = rect.h / 3
+  local twoThirdsHeight = oneThirdHeight * 2
+  rect.h = twoThirdsHeight
+  win:setFrame(rect, 0)
+end)
+
+hs.hotkey.bind({"ctrl", "alt"}, "pad3", function()
+  local win = hs.window.focusedWindow()
+  local rect = tallMonitor():frame()
+  local oneThirdHeight = rect.h / 3
+  local twoThirdsHeight = oneThirdHeight * 2
+  rect.y = rect.y + oneThirdHeight
+  rect.h = twoThirdsHeight
   win:setFrame(rect, 0)
 end)
