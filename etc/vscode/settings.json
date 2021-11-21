@@ -69,7 +69,6 @@
   "window.reopenFolders": "all",
   "window.restoreFullscreen": true,
   "window.title": "[${rootName}] ${activeEditorMedium}",
-  "window.zoomLevel": 0,
   "workbench.editor.revealIfOpen": true,
   "workbench.startupEditor": "none",
   "rust.mode": null,
