@@ -10,4 +10,4 @@ else
     git checkout master
 fi
 
-git pull --autostash
+git pull --autostash --recurse-submodules
