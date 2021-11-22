@@ -32,5 +32,5 @@ if [ ! -d /Applications/Hammerspoon.app ] ; then
 fi
 
 # iTerm
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${root_dir}/etc/iterm2/settings.plist"
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${root_dir}/etc/iterm2"
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
