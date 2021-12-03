@@ -13,6 +13,7 @@ function _configure() {
         "${HOME}/.pyenv/bin"
         "${HOME}/.pyenv/shims"
         "${HOME}/.apps/.venv/bin"
+        /opt/homebrew/bin
         /usr/local/opt/gettext/bin
         /usr/local/opt/openssl/bin
         /usr/local/bin
