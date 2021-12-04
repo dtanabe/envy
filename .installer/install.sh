@@ -3,6 +3,7 @@
 set -eu
 
 _error() {
+	echo
 	echo "$@" 1>&2
 	exit 1
 }
@@ -14,18 +15,26 @@ ENVY_ROOT=${ENVY_ROOT:-}
 
 ################################################################################
 # prerequisites
+
+echo -n "Checking prerequisites..."
 if [ -z "${HOME}" ]; then
 	_error "Could not determine \$HOME"
 fi
-if ! command -v git 2>&1 /dev/null; then
+if ! command -v git 2>&1 >/dev/null; then
 	_error "git could not be found"
 fi
-if ! command -v ssh 2>&1 /dev/null; then
+if ! command -v ssh 2>&1 >/dev/null; then
 	_error "ssh could not be found"
 fi
-if ssh -qT "git@${ENVY_GIT_HOST}" 2>/dev/null; [ $? -eq 255 ]; then
+
+[ -f "$HOME/.ssh/config" ] || _error "no ssh config file"
+
+grep "${ENVY_GIT_HOST}" "$HOME/.ssh/config" >/dev/null || _error ".ssh/config: missing config entry for ${ENVY_GIT_HOST}"
+
+if ssh -nqT "git@${ENVY_GIT_HOST}" 2>/dev/null; [ $? -eq 255 ]; then
 	_error "No SSH/git config for ${ENVY_GIT_HOST}"
 fi
+echo " GOOD"
 
 
 ################################################################################
