@@ -6,6 +6,12 @@ local log = hs.logger.new("envy", 'info')
 -- List of keys here:
 -- https://github.com/Hammerspoon/hammerspoon/blob/master/extensions/keycodes/internal.m#L365
 
+-- CTRL+ALT+ESC to reload configuration. This is high up in the file so that if we screw something
+-- up below, at least this binding will still work.
+hs.hotkey.bind({"ctrl", "alt"}, "escape", function()
+  hs.reload()
+end)
+
 local function wideMonitor()
   local screens = hs.screen.allScreens()
   return screens[1]
@@ -40,6 +46,10 @@ end
 
 hs.hotkey.bind({"ctrl", "alt"}, "S", function()
   hs.application.launchOrFocus("Slack")
+end)
+
+hs.hotkey.bind({"ctrl", "alt"}, "M", function()
+  hs.application.launchOrFocus("Mail")
 end)
 
 hs.hotkey.bind({"ctrl", "alt"}, "Z", function()
