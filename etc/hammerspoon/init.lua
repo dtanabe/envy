@@ -1,217 +1,54 @@
-require("roku")
-local chrome = require('chrome')
+local notHyper = {"ctrl", "alt"}
 
-local log = hs.logger.new("envy", 'info')
+-- CTRL+ALT+ESC to reload configuration. This is high up in the file so that if we screw something
+-- up below, at least this binding will still work.
+hs.hotkey.bind(notHyper, "escape", function() hs.reload() end)
+
+require("roku")
+local ola = require('ola')
+local paw = require('paw')
+
+local log = hs.logger.new('envy', 'info')
 
 -- List of keys here:
 -- https://github.com/Hammerspoon/hammerspoon/blob/master/extensions/keycodes/internal.m#L365
 
--- CTRL+ALT+ESC to reload configuration. This is high up in the file so that if we screw something
--- up below, at least this binding will still work.
-hs.hotkey.bind({"ctrl", "alt"}, "escape", function()
-  hs.reload()
-end)
-
-local function wideMonitor()
-  local screens = hs.screen.allScreens()
-  return screens[1]
-end
-
-local function tallMonitor()
-  local screens = hs.screen.allScreens()
-  return screens[2]
-end
-
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Y", function()
-  local win = hs.window.focusedWindow()
-  local f = wideMonitor():frame()
-  f.w = f.w / 2
-  win:setFrame(f, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "q", function()
-  local ok,result = hs.applescript([[
-    tell application "Safari"
-      make new document
-      activate
-    end tell
-  ]])
-end)
+-- hs.hotkey.bind({"ctrl", "alt"}, "q", function()
+--   local ok,result = hs.applescript([[
+--     tell application "Safari"
+--       make new document
+--       activate
+--     end tell
+--   ]])
+-- end)
 
 for i = 1, 9, 1 do
-  hs.hotkey.bind({"ctrl", "alt"}, tostring(i), function()
-    chrome.launchProfileNumbered(i)
-  end)
+  hs.hotkey.bind(notHyper, tostring(i), ola.chromeProfileFn(i))
 end
 
-hs.hotkey.bind({"ctrl", "alt"}, "S", function()
-  hs.application.launchOrFocus("Slack")
-end)
+hs.hotkey.bind(notHyper, "TAB",      ola.fn("iTerm"))
+hs.hotkey.bind(notHyper, "S",        ola.fn("Slack"))
+hs.hotkey.bind(notHyper, "M",        ola.fn("Mail"))
+hs.hotkey.bind(notHyper, "Z",        ola.fn("zoom.us.app"))
+hs.hotkey.bind(notHyper, "Q",        ola.safariNewPrivateWindowFn())
+hs.hotkey.bind(notHyper, "P",        ola.profileFn())
 
-hs.hotkey.bind({"ctrl", "alt"}, "M", function()
-  hs.application.launchOrFocus("Mail")
-end)
+hs.hotkey.bind(notHyper, "return",   paw.mainFn(0.00, 0.00, 1.00, 1.00))
+hs.hotkey.bind(notHyper, "left",     paw.mainFn(0.00, 0.00, 0.50, 1.00))
+hs.hotkey.bind(notHyper, "right",    paw.mainFn(0.50, 0.00, 0.50, 1.00))
+hs.hotkey.bind(notHyper, "up",       paw.mainFn(0.00, 0.00, 1.00, 0.50))
+hs.hotkey.bind(notHyper, "down",     paw.mainFn(0.00, 0.50, 1.00, 0.50))
+hs.hotkey.bind(notHyper, "=",        paw.mainFn(0.15, 0.00, 0.70, 1.00))
+hs.hotkey.bind(notHyper, "I",        paw.mainFn(0.00, 0.00, 0.50, 0.50))
+hs.hotkey.bind(notHyper, "O",        paw.mainFn(0.50, 0.00, 0.50, 0.50))
+hs.hotkey.bind(notHyper, "K",        paw.mainFn(0.00, 0.50, 0.50, 0.50))
+hs.hotkey.bind(notHyper, "L",        paw.mainFn(0.50, 0.50, 0.50, 0.50))
+hs.hotkey.bind(notHyper, "[",        paw.mainFn(0.00, 0.00, 0.70, 1.00))
+hs.hotkey.bind(notHyper, "]",        paw.mainFn(0.30, 0.00, 0.70, 1.00))
 
-hs.hotkey.bind({"ctrl", "alt"}, "Z", function()
-  hs.application.launchOrFocus("zoom.us.app")
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "TAB", function()
-  hs.application.launchOrFocus("iTerm")
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "P", function()
-  hs.execute("/usr/local/bin/code " .. os.getenv("HOME") .. "/Repositories/pb-envy")
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "return", function()
-  local win = hs.window.focusedWindow()
-  local rect = wideMonitor():frame()
-  win:setFrame(rect, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "left", function()
-  local win = hs.window.focusedWindow()
-  local rect = wideMonitor():frame()
-  rect.w = rect.w / 2
-  win:setFrame(rect, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "right", function()
-  local win = hs.window.focusedWindow()
-  local rect = wideMonitor():frame()
-  local halfWidth = rect.w / 2
-  rect.x = rect.x + halfWidth
-  rect.w = halfWidth
-  win:setFrame(rect, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "I", function()
-  local win = hs.window.focusedWindow()
-  local rect = wideMonitor():frame()
-  local halfWidth = rect.w / 2
-  local halfHeight = rect.h / 2
-  rect.w = halfWidth
-  rect.h = halfHeight
-  win:setFrame(rect, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "O", function()
-  local win = hs.window.focusedWindow()
-  local rect = wideMonitor():frame()
-  local halfWidth = rect.w / 2
-  local halfHeight = rect.h / 2
-  rect.x = halfWidth
-  rect.w = halfWidth
-  rect.h = halfHeight
-  win:setFrame(rect, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "K", function()
-  local win = hs.window.focusedWindow()
-  local rect = wideMonitor():frame()
-  local halfWidth = rect.w / 2
-  local halfHeight = rect.h / 2
-  rect.y = halfHeight
-  rect.w = halfWidth
-  rect.h = halfHeight
-  win:setFrame(rect, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "L", function()
-  local win = hs.window.focusedWindow()
-  local rect = wideMonitor():frame()
-  local halfWidth = rect.w / 2
-  local halfHeight = rect.h / 2
-  rect.x = halfWidth
-  rect.y = halfHeight
-  rect.w = halfWidth
-  rect.h = halfHeight
-  win:setFrame(rect, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "[", function()
-  local win = hs.window.focusedWindow()
-  local rect = wideMonitor():frame()
-  local twoThirdsWidth = rect.w * 2 / 3
-  rect.w = twoThirdsWidth
-  win:setFrame(rect, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "]", function()
-  local win = hs.window.focusedWindow()
-  local rect = wideMonitor():frame()
-  local oneThirdsWidth = rect.w / 3
-  local twoThirdsWidth = rect.w * 2 / 3
-  rect.x = rect.x + oneThirdsWidth
-  rect.w = twoThirdsWidth
-  win:setFrame(rect, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "up", function()
-  local win = hs.window.focusedWindow()
-  local rect = wideMonitor():frame()
-  local halfHeight = rect.h / 2
-  rect.h = halfHeight
-  win:setFrame(rect, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "down", function()
-  local win = hs.window.focusedWindow()
-  local rect = wideMonitor():frame()
-  local halfHeight = rect.h / 2
-  rect.y = rect.y + halfHeight
-  rect.h = halfHeight
-  win:setFrame(rect, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "padenter", function()
-  local win = hs.window.focusedWindow()
-  local rect = tallMonitor():frame()
-  win:setFrame(rect, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "pad8", function()
-  local win = hs.window.focusedWindow()
-  local rect = tallMonitor():frame()
-  local thirdHeight = rect.h / 3
-  rect.h = thirdHeight
-  win:setFrame(rect, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "pad5", function()
-  local win = hs.window.focusedWindow()
-  local rect = tallMonitor():frame()
-  local thirdHeight = rect.h / 3
-  rect.y = rect.y + thirdHeight
-  rect.h = thirdHeight
-  win:setFrame(rect, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "pad2", function()
-  local win = hs.window.focusedWindow()
-  local rect = tallMonitor():frame()
-  local thirdHeight = rect.h / 3
-  rect.y = rect.y + thirdHeight * 2
-  rect.h = thirdHeight
-  win:setFrame(rect, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "pad6", function()
-  local win = hs.window.focusedWindow()
-  local rect = tallMonitor():frame()
-  local oneThirdHeight = rect.h / 3
-  local twoThirdsHeight = oneThirdHeight * 2
-  rect.h = twoThirdsHeight
-  win:setFrame(rect, 0)
-end)
-
-hs.hotkey.bind({"ctrl", "alt"}, "pad3", function()
-  local win = hs.window.focusedWindow()
-  local rect = tallMonitor():frame()
-  local oneThirdHeight = rect.h / 3
-  local twoThirdsHeight = oneThirdHeight * 2
-  rect.y = rect.y + oneThirdHeight
-  rect.h = twoThirdsHeight
-  win:setFrame(rect, 0)
-end)
+hs.hotkey.bind(notHyper, "padenter", paw.tallFn(0.00, 0.00, 1.00, 1.00))
+hs.hotkey.bind(notHyper, "pad8",     paw.tallFn(0.00, 0.00, 1.00, 0.33))
+hs.hotkey.bind(notHyper, "pad5",     paw.tallFn(0.00, 0.33, 1.00, 0.33))
+hs.hotkey.bind(notHyper, "pad2",     paw.tallFn(0.00, 0.66, 1.00, 0.34))
+hs.hotkey.bind(notHyper, "pad6",     paw.tallFn(0.00, 0.00, 1.00, 0.66))
+hs.hotkey.bind(notHyper, "pad3",     paw.tallFn(0.00, 0.33, 1.00, 0.67))
