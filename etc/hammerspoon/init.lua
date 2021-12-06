@@ -32,6 +32,7 @@ hs.hotkey.bind(notHyper, "M",        ola.fn("Mail"))
 hs.hotkey.bind(notHyper, "Z",        ola.fn("zoom.us.app"))
 hs.hotkey.bind(notHyper, "Q",        ola.safariNewPrivateWindowFn())
 hs.hotkey.bind(notHyper, "P",        ola.profileFn())
+hs.hotkey.bind(notHyper, "/",        ola.hammerspoonConsoleFn())
 
 hs.hotkey.bind(notHyper, "return",   paw.mainFn(0.00, 0.00, 1.00, 1.00))
 hs.hotkey.bind(notHyper, "left",     paw.mainFn(0.00, 0.00, 0.50, 1.00))

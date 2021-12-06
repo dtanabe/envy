@@ -35,4 +35,10 @@ ola.profileFn = function()
   end
 end
 
+ola.hammerspoonConsoleFn = function()
+  return function()
+    hs.openConsole()
+  end
+end
+
 return ola

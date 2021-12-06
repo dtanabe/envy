@@ -42,6 +42,11 @@ end
 -- expressed as fractions of the overall screen size.
 paw.to = function(screen, x, y, w, h)
   local win = hs.window.focusedWindow()
+  if screen == nil then
+    log.wf("Tried to move the focused window to a monitor that we don't have!")
+    return
+  end
+
   local rect = screen:frame()
   win:setFrame({
     x = rect.x + rect.w * x,
