@@ -53,3 +53,5 @@ hs.hotkey.bind(notHyper, "pad5",     paw.tallFn(0.00, 0.33, 1.00, 0.33))
 hs.hotkey.bind(notHyper, "pad2",     paw.tallFn(0.00, 0.66, 1.00, 0.34))
 hs.hotkey.bind(notHyper, "pad6",     paw.tallFn(0.00, 0.00, 1.00, 0.66))
 hs.hotkey.bind(notHyper, "pad3",     paw.tallFn(0.00, 0.33, 1.00, 0.67))
+
+hs.hotkey.bind(notHyper, "pad-",     paw.thirdFn(0.00, 0.00, 1.00, 1.00))

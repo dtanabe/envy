@@ -27,6 +27,10 @@ paw.tallFn = function(x, y, w, h)
   return function () paw.tall(x, y, w, h) end
 end
 
+paw.thirdFn = function(x, y, w, h)
+  return function () paw.third(x, y, w, h) end
+end
+
 -- Moves the active window to the "main monitor" (the monitor with the biggest area).
 paw.main = function(x, y, w, h)
   return paw.to(paw.screens().main, x, y, w, h)
@@ -36,6 +40,11 @@ end
 paw.tall = function(x, y, w, h)
   local screens = hs.screen.allScreens()
   return paw.to(paw.screens().tall, x, y, w, h)
+end
+
+paw.third = function(x, y, w, h)
+  local screens = hs.screen.allScreens()
+  return paw.to(paw.screens().third, x, y, w, h)
 end
 
 -- Moves the active window to the specified monitor and at the specified coordinates,
@@ -90,7 +99,11 @@ paw.screens = function()
   table.sort(allScreens, function (a, b) return a.ratio > b.ratio end)
   local tallScreen = allScreens[count - 1].screen
 
-  return {main=mainScreen, tall=tallScreen}
+  if count >= 3 then
+    return {main=mainScreen, tall=tallScreen, third=allScreens[count - 2].screen}
+  else
+    return {main=mainScreen, tall=tallScreen}
+  end
 end
 
 return paw
