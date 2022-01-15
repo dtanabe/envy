@@ -4,7 +4,7 @@
 set -euo pipefail
 
 # Hammerspoon runs a very restricted PATH, but then we can't find jq
-export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/bin:/opt/homebrew/bin
 
 if ! command -v jq >/dev/null; then
   echo "no jq! $PATH"
