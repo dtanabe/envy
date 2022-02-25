@@ -150,6 +150,8 @@
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
+	<key>LeftTabBarWidth</key>
+	<real>114</real>
 	<key>NeverWarnAboutShortLivedSessions_D31783F5-3432-472A-AFB3-34F6E516907D</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_D31783F5-3432-472A-AFB3-34F6E516907D_selection</key>
@@ -697,7 +699,7 @@
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
-			<integer>1000</integer>
+			<integer>0</integer>
 			<key>Selected Text Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -731,7 +733,7 @@
 			<key>Transparency</key>
 			<real>0.086001444065824453</real>
 			<key>Unlimited Scrollback</key>
-			<false/>
+			<true/>
 			<key>Use Bold Font</key>
 			<true/>
 			<key>Use Bright Bold</key>
@@ -795,6 +797,8 @@
 	<integer>5</integer>
 	<key>TabViewType</key>
 	<integer>2</integer>
+	<key>TabsHaveCloseButton</key>
+	<false/>
 	<key>UseBorder</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>

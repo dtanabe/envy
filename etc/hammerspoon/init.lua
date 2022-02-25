@@ -27,8 +27,10 @@ for i = 1, 9, 1 do
 end
 
 hs.hotkey.bind(notHyper, "TAB",      ola.fn("iTerm"))
+hs.hotkey.bind(notHyper, "F",        ola.fn("OmniFocus"))
 hs.hotkey.bind(notHyper, "S",        ola.fn("Slack"))
 hs.hotkey.bind(notHyper, "M",        ola.fn("Mail"))
+hs.hotkey.bind(notHyper, "R",        ola.fn("Reeder"))
 hs.hotkey.bind(notHyper, "Z",        ola.fn("zoom.us.app"))
 hs.hotkey.bind(notHyper, "Q",        ola.safariNewPrivateWindowFn())
 hs.hotkey.bind(notHyper, "P",        ola.profileFn())
