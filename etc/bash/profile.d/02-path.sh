@@ -9,6 +9,7 @@ function _configure() {
         "${HOME}/.cargo/bin"
         "${HOME}/.daml/bin"
         "${HOME}/.local/bin"
+        "${HOME}/.goenv/bin"
         "${HOME}/.poetry/bin"
         "${HOME}/.pyenv/bin"
         "${HOME}/.pyenv/shims"
