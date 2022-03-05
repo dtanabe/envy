@@ -4,7 +4,7 @@ update_terminal_cwd ()
 { 
     local url_path='';
     { 
-        local i ch hexch LC_CTYPE=C LC_COLLATE=C LC_ALL= LANG=;
+        local i ch hexch LC_CTYPE=C LC_COLLATE=C LC_ALL='' LANG='';
         for ((i = 0; i < ${#PWD}; ++i))
         do
             ch="${PWD:i:1}";

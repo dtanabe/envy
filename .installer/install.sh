@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # vim: noet
 set -eu
 
@@ -20,10 +20,10 @@ echo -n "Checking prerequisites..."
 if [ -z "${HOME}" ]; then
 	_error "Could not determine \$HOME"
 fi
-if ! command -v git 2>&1 >/dev/null; then
+if ! command -v git >/dev/null 2>&1; then
 	_error "git could not be found"
 fi
-if ! command -v ssh 2>&1 >/dev/null; then
+if ! command -v ssh >/dev/null 2>&1; then
 	_error "ssh could not be found"
 fi
 
