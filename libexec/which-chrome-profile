@@ -15,10 +15,11 @@ profile_name="${1:-}"
 export profile_name
 
 is_profile_dir () {
-  if [ -z "${profile_name}" ]; then
-    [ -n "$(jq -r .profile.name "$1/Preferences" 2>/dev/null)" ]
+  local prefsFile="$1/Preferences"
+  [ -f "${prefsFile}" ] && if [ -z "${profile_name}" ]; then
+    [ -n "$(jq -r .profile.name "${prefsFile}" 2>/dev/null)" ]
   else
-    [ "${profile_name}" = "$(jq -r .profile.name "$1/Preferences")" ]
+    [ "${profile_name}" = "$(jq -r .profile.name "${prefsFile}" 2>/dev/null)" ]
   fi
 }
 

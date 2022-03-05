@@ -3,6 +3,7 @@ local chrome = {}
 local log = hs.logger.new("chrome", "info")
 local __dir__ = debug.getinfo(1).source:match("@?(.*/)")
 
+local chromePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 local function dirname(str)
   if str:sub(-1) == "/" then
@@ -14,7 +15,22 @@ end
 local chromeTabsFile = os.getenv("HOME") .. "/.config/chrome-tabs"
 local whichChromeProfile = dirname(dirname(__dir__)) .. "/libexec/which-chrome-profile"
 
----Returns the path of the Chrome profile corresponding to the specified number.
+---Launches a Chrome window with the specified profile and URL.
+---
+---@param name string? Name of the profile, or nil for an Incognito window.
+---@param url string The URL to open.
+function chrome.open(name, url)
+  local args
+  if name == nil then
+    args = "--incognito"
+  else
+    args = string.format("--profile-directory=%q", chrome.profile(name))
+  end
+
+  hs.execute(string.format("%q %s %q", chromePath, args, url))
+end
+
+---Returns the path of the Chrome profile of the specified name.
 ---
 ---@param name string
 ---@return string?

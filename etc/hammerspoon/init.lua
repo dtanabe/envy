@@ -4,6 +4,7 @@ local notHyper = {"ctrl", "alt"}
 -- up below, at least this binding will still work.
 hs.hotkey.bind(notHyper, "escape", function() hs.reload() end)
 
+require("browser")
 require("roku")
 local ola = require('ola')
 local paw = require('paw')
@@ -50,10 +51,14 @@ hs.hotkey.bind(notHyper, "[",        paw.mainFn(0.00, 0.00, 0.70, 1.00))
 hs.hotkey.bind(notHyper, "]",        paw.mainFn(0.30, 0.00, 0.70, 1.00))
 
 hs.hotkey.bind(notHyper, "padenter", paw.tallFn(0.00, 0.00, 1.00, 1.00))
+hs.hotkey.bind(notHyper, "pad7",     paw.tallFn(0.00, 0.00, 1.00, 0.50))
+hs.hotkey.bind(notHyper, "pad4",     paw.tallFn(0.00, 0.25, 1.00, 0.50))
+hs.hotkey.bind(notHyper, "pad1",     paw.tallFn(0.00, 0.50, 1.00, 0.50))
 hs.hotkey.bind(notHyper, "pad8",     paw.tallFn(0.00, 0.00, 1.00, 0.33))
 hs.hotkey.bind(notHyper, "pad5",     paw.tallFn(0.00, 0.33, 1.00, 0.33))
 hs.hotkey.bind(notHyper, "pad2",     paw.tallFn(0.00, 0.66, 1.00, 0.34))
-hs.hotkey.bind(notHyper, "pad6",     paw.tallFn(0.00, 0.00, 1.00, 0.66))
+hs.hotkey.bind(notHyper, "pad9",     paw.tallFn(0.00, 0.00, 1.00, 0.66))
+hs.hotkey.bind(notHyper, "pad6",     paw.tallFn(0.00, 0.16, 1.00, 0.66))
 hs.hotkey.bind(notHyper, "pad3",     paw.tallFn(0.00, 0.33, 1.00, 0.67))
 
 hs.hotkey.bind(notHyper, "pad-",     paw.thirdFn(0.00, 0.00, 1.00, 1.00))
