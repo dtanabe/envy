@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # vim: noet
 set -eu
 
@@ -16,7 +16,7 @@ ENVY_ROOT=${ENVY_ROOT:-}
 ################################################################################
 # prerequisites
 
-echo -n "Checking prerequisites..."
+echo "Checking prerequisites..."
 if [ -z "${HOME}" ]; then
 	_error "Could not determine \$HOME"
 fi

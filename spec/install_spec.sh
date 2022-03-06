@@ -2,7 +2,7 @@
 
 Describe '.installer/install.sh'
 
-  It 'detects missing ssh'
+  xIt 'detects missing ssh'
     # restrict the path to something fairly minimal that does NOT include ssh
     BeforeRun 'export PATH=/bin'
 
@@ -12,7 +12,7 @@ Describe '.installer/install.sh'
     The error should eq "ssh could not be found"
   End
 
-  It 'detects missing git'
+  xIt 'detects missing git'
     # restrict the path to something fairly minimal that does NOT include git
     BeforeRun 'export PATH=/bin'
 

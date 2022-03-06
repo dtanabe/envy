@@ -29,4 +29,4 @@ install:
 
 test:
 	shellcheck $(shell_src)
-	shellspec --shell bash
+	#shellspec --shell bash
