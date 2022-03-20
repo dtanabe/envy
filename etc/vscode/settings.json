@@ -134,5 +134,7 @@
   "Lua.workspace.library": [
     "/Applications/Hammerspoon.app/Contents/Resources/extensions"
   ],
-  "cmake.configureOnOpen": true
+  "cmake.configureOnOpen": true,
+  "java.format.settings.url": ".formatter-config.xml",
+  "redhat.telemetry.enabled": false
 }
