@@ -1,3 +1,5 @@
+local hsScreen = require('hs.screen')
+
 -- paw: short for "position active window".
 local paw = {}
 
@@ -31,30 +33,32 @@ paw.thirdFn = function(x, y, w, h)
   return function () paw.third(x, y, w, h) end
 end
 
--- Moves the active window to the "main monitor" (the monitor with the biggest area).
+-- Moves the active window to the "main monitor" (the monitor with the biggest area that is widescreen).
 paw.main = function(x, y, w, h)
-  return paw.to(paw.screens().main, x, y, w, h)
+  local screens = paw.screens()
+  paw.to(screens.wide[1], x, y, w, h)
 end
 
 -- Moves the active window to the "tall monitor" (the monitor with the highest h/w ratio).
 paw.tall = function(x, y, w, h)
-  local screens = hs.screen.allScreens()
-  return paw.to(paw.screens().tall, x, y, w, h)
+  local screens = paw.screens()
+  paw.to(screens.tall[1], x, y, w, h)
 end
 
 paw.third = function(x, y, w, h)
-  local screens = hs.screen.allScreens()
-  return paw.to(paw.screens().third, x, y, w, h)
+  local screens = paw.screens()
+  paw.to(screens.wide[2], x, y, w, h)
 end
 
 -- Moves the active window to the specified monitor and at the specified coordinates,
 -- expressed as fractions of the overall screen size.
 paw.to = function(screen, x, y, w, h)
-  local win = hs.window.focusedWindow()
   if screen == nil then
     log.wf("Tried to move the focused window to a monitor that we don't have!")
     return
   end
+
+  local win = hs.window.focusedWindow()
 
   local rect = screen:frame()
   win:setFrame({
@@ -65,9 +69,13 @@ paw.to = function(screen, x, y, w, h)
   }, 0)
 end
 
+local screenSize = function(screen)
+  r = screen:frame()
+  return r.w * r.h
+end
 ---@class paw.Screens
----@field main paw.Screen
----@field tall paw.Screen?
+---@field tall hs.Screen[]
+---@field wide hs.Screen[]
 
 ---@class paw.Screen
 
@@ -75,35 +83,23 @@ end
 ---
 ---@return paw.Screens @screens
 paw.screens = function()
-  local allScreens = {}
-  local count = 0
-  for idx, screen in ipairs(hs.screen.allScreens()) do
-    count = count + 1
+  local wide = {}
+  local tall = {}
+
+  for idx, screen in ipairs(hsScreen.allScreens()) do
     local r = screen:frame()
-    allScreens[idx] = {
-      screen = screen,
-      size = r.w * r.h,
-      ratio = r.w / r.h
-    }
+    if r.w > r.h then
+      table.insert(wide, screen)
+    else
+      table.insert(tall, screen)
+    end
   end
 
-  if count == 1 then
-    return { main=allScreens[1].screen }
-  end
+  table.sort(tall, function (a, b) return screenSize(a) > screenSize(b) end)
+  table.sort(wide, function (a, b) return screenSize(a) > screenSize(b) end)
 
-  table.sort(allScreens, function (a, b) return a.size < b.size end)
-
-  local mainScreen = allScreens[count].screen
-  allScreens[count] = nil
-
-  table.sort(allScreens, function (a, b) return a.ratio > b.ratio end)
-  local tallScreen = allScreens[count - 1].screen
-
-  if count >= 3 then
-    return {main=mainScreen, tall=tallScreen, third=allScreens[count - 2].screen}
-  else
-    return {main=mainScreen, tall=tallScreen}
-  end
+  return {wide=wide, tall=tall}
 end
+
 
 return paw
