@@ -1,0 +1,17 @@
+# shellcheck shell=bash
+# shellcheck disable=SC1090
+# SC1090: Ignored because we're intentionally sourcing arbitrary paths
+
+if [ -z "${ENVY_ROOT}" ]; then
+    ENVY_ROOT="$(dirname "$(dirname "${0:a:h}")")"
+    export ENVY_ROOT
+fi
+
+if ! cmp -s "${ENVY_ROOT}/etc/zsh/profile" "${0:a}"; then
+    echo "ERROR: Not sure where etc/zsh/profile is, so bailing! (ENVY_ROOT=${ENVY_ROOT})"
+    exit 1
+fi
+
+for rcfile in "${ENVY_ROOT}"/etc/zsh/profile.d/*.zsh; do
+    . "${rcfile}"
+done
