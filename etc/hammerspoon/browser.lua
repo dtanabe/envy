@@ -29,6 +29,7 @@ hs.urlevent.httpCallback = function(scheme, host, _, fullURL, senderPID)
 
     if host:sub(-#k) == k then
       chrome.open("DA", fullURL)
+      return
     end
   end
 
