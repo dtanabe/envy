@@ -1,0 +1,30 @@
+path=(
+    "${HOME}/.bin"
+    "${HOME}/.apps/google-cloud-sdk/bin"
+    "${HOME}/.cargo/bin"
+    "${HOME}/.daml/bin"
+    "${HOME}/.local/bin"
+    "${HOME}/.goenv/bin"
+    "${HOME}/.poetry/bin"
+    "${HOME}/.pyenv/bin"
+    "${HOME}/.pyenv/shims"
+    "${HOME}/.apps/.venv/bin"
+    /opt/homebrew/bin
+    /usr/local/opt/gettext/bin
+    /usr/local/opt/openssl/bin
+    /usr/local/bin
+    /usr/bin
+    /bin
+    /usr/sbin
+    /sbin
+    /snap/bin
+    /opt/local/bin
+    /opt/local/sbin
+    /Applications/MacVim.app/Contents/bin
+    "${HOME}/Applications"
+    "${ENVY_ROOT}/bin"
+    node_modules/.bin
+    $path
+)
+
+export PATH
