@@ -1,19 +1,22 @@
 # shellcheck shell=zsh
 
-autoload -Uz vcs_info
-setopt prompt_subst
+export STARSHIP_CONFIG="${ENVY_ROOT}/etc/starship/starship.toml"
+eval "$(/Users/dtanabe/Applications/starship init zsh)"
 
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git:*' formats ":[%b] 📁 %r/%S"
+# autoload -Uz vcs_info
+# setopt prompt_subst
 
-precmd() {
-    local prompt_path
-    vcs_info
+# zstyle ':vcs_info:*' enable git
+# zstyle ':vcs_info:git:*' formats ":[%b] 📁 %r/%S"
 
-    if [[ -n ${vcs_info_msg_0_} ]]; then
-        prompt_path="$vcs_info_msg_0_"
-    else
-        prompt_path=": 📁 %/"
-    fi
-    PROMPT='%(?.   0 . %? ) %* %!'"$prompt_path"$'\n$ '
-}
+# precmd() {
+#     local prompt_path
+#     vcs_info
+
+#     if [[ -n ${vcs_info_msg_0_} ]]; then
+#         prompt_path="$vcs_info_msg_0_"
+#     else
+#         prompt_path=": 📁 %/"
+#     fi
+#     PROMPT='%(?.   0 . %? ) %* %!'"$prompt_path"$'\n$ '
+# }

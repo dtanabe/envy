@@ -1,7 +1,9 @@
+local urlevent = require('hs.urlevent')
 local chrome = require("chrome")
 local log = require("hs.logger").new('browser', 'info')
 
 local da = {
+  'daholdings.slack.com',
   'digitalasset1.lightning.force.com',
   'digitalasset.zoom.us',
   'discuss.daml.com',
@@ -17,17 +19,16 @@ local subdomains = {
 }
 
 local function safari(url)
-  hs.urlevent.openURLWithBundle(url, 'com.apple.safari')
+  urlevent.openURLWithBundle(url, 'com.apple.safari')
 end
 
-
-hs.urlevent.setDefaultHandler('http')
-hs.urlevent.setDefaultHandler('https')
-hs.urlevent.httpCallback = function(scheme, host, _, fullURL, senderPID)
+urlevent.setDefaultHandler('http')
+urlevent.setDefaultHandler('https')
+urlevent.httpCallback = function(scheme, host, _, fullURL, senderPID)
   for _, k in ipairs(subdomains) do
-    log.f("testing %s against %s (%s)", host, k, host:sub(-#k))
+    log.f("testing %s against %s (%s)", host, k, host:sub(- #k))
 
-    if host:sub(-#k) == k then
+    if host:sub(- #k) == k then
       chrome.open("DA", fullURL)
       return
     end

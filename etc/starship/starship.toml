@@ -1,0 +1,26 @@
+format = """
+$status\
+$time\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$line_break\
+$jobs\
+$character
+"""
+
+[status]
+style = "bg:blue"
+symbol = "🔴 "
+success_symbol = "🟢 SUCCESS"
+format = '[\[$symbol$common_meaning$signal_name$maybe_int\]]($style) '
+map_symbol = true
+disabled = false
+
+[time]
+disabled = false
+format = '[$time_hours24]($style)[:]($style blink)[$time_minutes]($style blink)[:]($style blink)[$time_seconds]($style blink) '

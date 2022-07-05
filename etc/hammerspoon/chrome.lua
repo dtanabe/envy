@@ -1,6 +1,8 @@
+local exec = hs.execute
+local log = require('hs.logger').new("chrome", "info")
+
 local chrome = {}
 
-local log = hs.logger.new("chrome", "info")
 local __dir__ = debug.getinfo(1).source:match("@?(.*/)")
 
 local chromePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -27,7 +29,7 @@ function chrome.open(name, url)
     args = string.format("--profile-directory=%q", chrome.profile(name))
   end
 
-  hs.execute(string.format("%q %s %q", chromePath, args, url))
+  exec(string.format("%q %s %q", chromePath, args, url))
 end
 
 ---Returns the path of the Chrome profile of the specified name.
@@ -54,7 +56,7 @@ function chrome.launchProfileNumbered(number)
   if profile ~= nil then
     local cmd = "\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --profile-directory=\""..profile.."\""
     log.i("Running: "..cmd)
-    hs.execute(cmd)
+    exec(cmd)
   end
 end
 
