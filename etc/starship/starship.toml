@@ -13,6 +13,13 @@ $jobs\
 $character
 """
 
+[directory]
+truncation_length = 100
+
+[git_branch]
+format = "[\\[$symbol$branch(:$remote_branch)\\]]($style) "
+style = "green bold"
+
 [status]
 style = "bg:blue"
 symbol = "🔴 "
@@ -22,5 +29,6 @@ map_symbol = true
 disabled = false
 
 [time]
+style = ""
+format = '[$time]($style) '
 disabled = false
-format = '[$time_hours24]($style)[:]($style blink)[$time_minutes]($style blink)[:]($style blink)[$time_seconds]($style blink) '
