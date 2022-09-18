@@ -34,3 +34,8 @@ fi
 # iTerm
 defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${root_dir}/etc/iterm2"
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
+# OS X
+defaults write com.apple.dock autohide -bool true && \
+defaults write com.apple.dock autohide-delay -float 1000 && \
+killall Dock

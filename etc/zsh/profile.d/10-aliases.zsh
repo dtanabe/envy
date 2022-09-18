@@ -4,23 +4,11 @@
 # SC2139: we actually want these variables evaluated when they are being evaluated
 # SC2140: false positive; shellcheck doesn't like `alias "thing"="that"`
 
-# Set up coloring for LS
-if [ "$(uname)" = "Darwin" ]; then
-    # Mac OS X-specific
-    alias ls='/bin/ls -FGw'
-else
-    alias ls='ls --color -F'
-fi
-
 # Set up basic command aliases.
 alias     c='cd'
 alias   cdd='cd'
 alias find.='find .'
 alias     e='exit'
-alias     l='ls'
-alias    ll='ls -l'
-alias   lla='ls -lA'
-alias    la='ls -A'
 
 alias k='kubectl'
 alias kw='kubewatch'

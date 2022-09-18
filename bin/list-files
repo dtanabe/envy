@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if command -v exa >/dev/null 2>&1; then
+    exa_flags="--icons --git --octal-permissions --no-permissions --time-style full-iso"
+    case "$(basename "$0")" in
+    l1)
+        exec exa -1 $@;;
+    llat2)
+        exec exa -la $exa_flags --tree --level=2 $@;;
+    llt2)
+        exec exa -l $exa_flags --tree --level=2 $@;;
+    lat2)
+        exec exa -a $exa_flags --tree --level=2 $@;;
+    lt2)
+        exec exa $exa_flags --tree --level=2 $@;;
+    lla)
+        exec exa -la $exa_flags $@;;
+    la)
+        exec exa -a $exa_flags $@;;
+    ll)
+        exec exa -l $exa_flags $@;;
+    *)
+        exec exa $exa_flags $@;;
+    esac
+else
+    if [ "$(uname)" = "Darwin" ]; then
+        _ls="/bin/ls -FGw"
+    else
+        _ls="/bin/ls --color -F"
+    fi
+
+    case "$(basename "$0")" in
+    l1)
+        exec /bin/ls -1 $@;;
+    llt2)
+        if [ $# -eq 0 ]; then
+            exec find . -mindepth 1 -maxdepth 2 -name '.*' -prune -o -print
+        else
+            exec find $@ -maxdepth 2
+        fi;;
+    lt2)
+        if [ $# -eq 0 ]; then
+            exec find . -mindepth 1 -maxdepth 2
+        else
+            exec find $@ -maxdepth 2
+        fi;;
+    lla)
+        exec $_ls -la $@;;
+    la)
+        exec $_ls -a $@;;
+    ll)
+        exec $_ls -l $@;;
+    *)
+        exec $_ls $@;;
+    esac
+fi

@@ -155,7 +155,7 @@
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>LeftTabBarWidth</key>
-	<real>114</real>
+	<real>118</real>
 	<key>NeverWarnAboutShortLivedSessions_D31783F5-3432-472A-AFB3-34F6E516907D</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_D31783F5-3432-472A-AFB3-34F6E516907D_selection</key>
@@ -1353,6 +1353,8 @@
 			<string>/Users/dtanabe</string>
 		</dict>
 	</array>
+	<key>PMPrintingExpandedStateForPrint2</key>
+	<false/>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -1386,6 +1388,8 @@
 			<string>kNextWindowPointerAction</string>
 		</dict>
 	</dict>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>ShowFullScreenTabBar</key>
 	<false/>
 	<key>SoundForEsc</key>
