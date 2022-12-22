@@ -43,13 +43,7 @@ function _configure() {
 
     # For each repo, create a quick keyboard shortcut to allow jumping there.
     if [ -n "${REPOS_ROOT}" ]; then
-        if find . -regextype grep -regex "\0" -maxdepth 1 >/dev/null 2>&1; then
-            find_opts="-regextype grep"
-        fi
-
-        # shellcheck disable=SC2086
-        # SC2086: ${find_opts} needs to be word-split to work as intended
-        for repo in $(find "${REPOS_ROOT}" -mindepth 1 -maxdepth 1 -type d ${find_opts} -regex ".*/[[:alnum:]-]*"); do
+        for repo in $(find "${REPOS_ROOT}" -mindepth 1 -maxdepth 1 -type d -regex '.*/[0-9A-Za-z\.\-]*'); do
             alias "$(basename "${repo}")"="cd $repo"
         done
     fi
