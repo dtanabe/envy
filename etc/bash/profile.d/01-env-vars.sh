@@ -1,10 +1,11 @@
 # shellcheck shell=bash
 
+set -a
+source "${ENVY_ROOT}/etc/env"
+set +a
 export LC_CTYPE="en_US.UTF-8"
-export LANG="en_US.UTF-8"
 
 export BLOCKSIZE=K
-export EDITOR=vim
 export PAGER=less
 export LESS=-R
 

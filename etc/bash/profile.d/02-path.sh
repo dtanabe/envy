@@ -5,7 +5,6 @@ function _configure() {
     local path_tmp=":${PATH}:"
     local path_components=(
         "${HOME}/.bin"
-        "${HOME}/.apps/google-cloud-sdk/bin"
         "${HOME}/.cargo/bin"
         "${HOME}/.daml/bin"
         "${HOME}/.local/bin"
@@ -15,6 +14,7 @@ function _configure() {
         "${HOME}/.pyenv/shims"
         "${HOME}/.apps/.venv/bin"
         /opt/homebrew/bin
+        /opt/homebrew/share/google-cloud-sdk/bin
         /usr/local/opt/gettext/bin
         /usr/local/opt/openssl/bin
         /usr/local/bin

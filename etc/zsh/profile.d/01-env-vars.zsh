@@ -1,1 +1,3 @@
-export EDITOR=vim
+set -a
+source "${ENVY_ROOT}/etc/env"
+set +a

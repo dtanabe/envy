@@ -1,9 +1,11 @@
+local hsLogger = require('hs.logger')
 local hsScreen = require('hs.screen')
+local hsWindow = require('hs.window')
 
 -- paw: short for "position active window".
 local paw = {}
 
-local log = hs.logger.new('paw', 'info')
+local log = hsLogger.new('paw', 'info')
 
 ---Returns a function that moves the active window to the "main monitor"
 ---(the monitor with the biggest area).
@@ -14,7 +16,7 @@ local log = hs.logger.new('paw', 'info')
 ---@param h number The desired height, measured as a fraction of the height main monitor.
 ---@return fun():nil @A function that, when called, moves the active window to the main monitor with the specified sizing parameters.
 paw.mainFn = function(x, y, w, h)
-  return function () paw.main(x, y, w, h) end
+  return function() paw.main(x, y, w, h) end
 end
 
 ---Returns a function that moves the active window to the "tall monitor"
@@ -26,11 +28,11 @@ end
 ---@param h number The desired height, measured as a fraction of the height tall monitor.
 ---@return fun():nil @A function that, when called, moves the active window to the tall monitor with the specified sizing parameters.
 paw.tallFn = function(x, y, w, h)
-  return function () paw.tall(x, y, w, h) end
+  return function() paw.tall(x, y, w, h) end
 end
 
 paw.thirdFn = function(x, y, w, h)
-  return function () paw.third(x, y, w, h) end
+  return function() paw.third(x, y, w, h) end
 end
 
 -- Moves the active window to the "main monitor" (the monitor with the biggest area that is widescreen).
@@ -58,7 +60,7 @@ paw.to = function(screen, x, y, w, h)
     return
   end
 
-  local win = hs.window.focusedWindow()
+  local win = hsWindow.focusedWindow()
 
   local rect = screen:frame()
   win:setFrame({
@@ -74,8 +76,8 @@ local screenSize = function(screen)
   return r.w * r.h
 end
 ---@class paw.Screens
----@field tall hs.Screen[]
----@field wide hs.Screen[]
+---@field tall hsScreen.Screen[]
+---@field wide hsScreen.Screen[]
 
 ---@class paw.Screen
 
@@ -95,10 +97,10 @@ paw.screens = function()
     end
   end
 
-  table.sort(tall, function (a, b) return screenSize(a) > screenSize(b) end)
-  table.sort(wide, function (a, b) return screenSize(a) > screenSize(b) end)
+  table.sort(tall, function(a, b) return screenSize(a) > screenSize(b) end)
+  table.sort(wide, function(a, b) return screenSize(a) > screenSize(b) end)
 
-  return {wide=wide, tall=tall}
+  return { wide = wide, tall = tall }
 end
 
 

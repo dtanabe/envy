@@ -3,18 +3,27 @@ local chrome = require("chrome")
 local log = require("hs.logger").new('browser', 'info')
 
 local da = {
+  'auth0.auth0.com',
+  'cloudlogging.app.goo.gl',
   'daholdings.slack.com',
+  'damldriven.slack.com',
   'digitalasset1.lightning.force.com',
+  'digitalasset.atlassian.net',
+  'digitalasset.greenhouse.io',
   'digitalasset.zoom.us',
+  'digtialasset.com',
   'discuss.daml.com',
   'figma.com',
   'github.com',
+  'help.digitalaset.com',
   'lucid.app',
+  'support.digitalasset.com',
 }
 local subdomains = {
   'circleci.com',
   'datadoghq.com',
   'google.com',
+  'pulumi.com',
   'zoom.us',
 }
 

@@ -1,5 +1,6 @@
 local chrome = require('chrome')
 local safari = require('safari')
+local a = require('hs.application')
 
 local log = hs.logger.new('ola', 'info')
 
@@ -8,6 +9,12 @@ local ola = {}
 ola.fn = function(appName)
   return function()
     hs.application.launchOrFocus(appName)
+    local app = a.find(appName)
+    if app ~= nil then
+      for win in app:allWindows() do
+        win.activate()
+      end
+    end
   end
 end
 

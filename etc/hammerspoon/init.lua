@@ -1,4 +1,6 @@
 local hotkey = require('hs.hotkey')
+local keycodes = require('hs.keycodes')
+
 local notHyper = { "ctrl", "alt" }
 
 -- CTRL+ALT+ESC to reload configuration. This is high up in the file so that if we screw something
@@ -64,6 +66,19 @@ hotkey.bind(notHyper, "pad6", paw.tallFn(0.00, 0.16, 1.00, 0.66))
 hotkey.bind(notHyper, "pad3", paw.tallFn(0.00, 0.33, 1.00, 0.67))
 
 hotkey.bind(notHyper, "pad-", paw.thirdFn(0.00, 0.00, 1.00, 1.00))
+
+hotkey.bind(notHyper, "F1", function()
+  keycodes.currentSourceID('com.apple.keylayout.US')
+end)
+hotkey.bind(notHyper, "F2", function()
+  keycodes.currentSourceID('com.apple.keylayout.Greek')
+end)
+hotkey.bind(notHyper, "F3", function()
+  keycodes.currentSourceID('com.apple.inputmethod.SCIM.ITABC')
+end)
+hotkey.bind(notHyper, "F4", function()
+  keycodes.currentSourceID('com.apple.inputmethod.Kotoeri.RomajiTyping.Japanese')
+end)
 
 require("streamdeck")
 require("zoom")

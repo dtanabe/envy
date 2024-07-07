@@ -1,0 +1,5 @@
+EDITOR=vim
+LANG=en_US.UTF-8
+
+GOENV_ROOT="${HOME}/.goenv"
+GOPATH="${HOME}/.go"

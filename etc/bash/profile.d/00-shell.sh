@@ -1,8 +1,7 @@
 # shellcheck shell=bash
 
-case "$-" in 
+case "$-" in
   *i*)
-    w
     set -o vi
     ;;
 esac
