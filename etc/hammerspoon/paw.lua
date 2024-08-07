@@ -35,6 +35,10 @@ paw.thirdFn = function(x, y, w, h)
   return function() paw.third(x, y, w, h) end
 end
 
+paw.builtInFn = function(x, y, w, h)
+  return function() paw.builtIn(x, y, w, h) end
+end
+
 -- Moves the active window to the "main monitor" (the monitor with the biggest area that is widescreen).
 paw.main = function(x, y, w, h)
   local screens = paw.screens()
@@ -50,6 +54,16 @@ end
 paw.third = function(x, y, w, h)
   local screens = paw.screens()
   paw.to(screens.wide[2], x, y, w, h)
+end
+
+-- Moves the active window to the built-in monitor.
+paw.builtIn = function(x, y, w, h)
+  local screens = paw.screens()
+  if screens.builtIn ~= nil then
+    paw.to(screens.builtIn, x, y, w, h)
+  else
+    paw.to(screens.wide[1], x, y, w, h)
+  end
 end
 
 -- Moves the active window to the specified monitor and at the specified coordinates,
@@ -75,9 +89,11 @@ local screenSize = function(screen)
   r = screen:frame()
   return r.w * r.h
 end
+
 ---@class paw.Screens
 ---@field tall hsScreen.Screen[]
 ---@field wide hsScreen.Screen[]
+---@field builtIn? hsScreen.Screen
 
 ---@class paw.Screen
 
@@ -87,6 +103,7 @@ end
 paw.screens = function()
   local wide = {}
   local tall = {}
+  local builtIn = hs.screen 'Built%-in'
 
   for idx, screen in ipairs(hsScreen.allScreens()) do
     local r = screen:frame()
@@ -100,7 +117,7 @@ paw.screens = function()
   table.sort(tall, function(a, b) return screenSize(a) > screenSize(b) end)
   table.sort(wide, function(a, b) return screenSize(a) > screenSize(b) end)
 
-  return { wide = wide, tall = tall }
+  return { wide = wide, tall = tall, builtIn = builtIn }
 end
 
 

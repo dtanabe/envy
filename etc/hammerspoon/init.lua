@@ -65,7 +65,7 @@ hotkey.bind(notHyper, "pad9", paw.tallFn(0.00, 0.00, 1.00, 0.66))
 hotkey.bind(notHyper, "pad6", paw.tallFn(0.00, 0.16, 1.00, 0.66))
 hotkey.bind(notHyper, "pad3", paw.tallFn(0.00, 0.33, 1.00, 0.67))
 
-hotkey.bind(notHyper, "pad-", paw.thirdFn(0.00, 0.00, 1.00, 1.00))
+hotkey.bind(notHyper, "\\", paw.builtInFn(0.00, 0.00, 1.00, 1.00))
 
 hotkey.bind(notHyper, "F1", function()
   keycodes.currentSourceID('com.apple.keylayout.US')
