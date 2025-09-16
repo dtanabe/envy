@@ -1,7 +1,13 @@
+local exec = hs.execute
 local hotkey = require('hs.hotkey')
 local keycodes = require('hs.keycodes')
 
 local notHyper = { "ctrl", "alt" }
+
+local display = {
+  D1 = 'B9287DD1-E152-4643-8423-0C7E3CB620F1',
+  D2 = 'BB18D2F2-E192-414A-B944-44299D6376B8',
+}
 
 -- CTRL+ALT+ESC to reload configuration. This is high up in the file so that if we screw something
 -- up below, at least this binding will still work.
@@ -78,6 +84,21 @@ hotkey.bind(notHyper, "F3", function()
 end)
 hotkey.bind(notHyper, "F4", function()
   keycodes.currentSourceID('com.apple.inputmethod.Kotoeri.RomajiTyping.Japanese')
+end)
+hotkey.bind("", "F16", function()
+  exec('/opt/homebrew/bin/m1ddc display ' .. display.D1 .. ' set input 15')
+end)
+hotkey.bind("shift", "F16", function()
+  exec('/opt/homebrew/bin/m1ddc display ' .. display.D2 .. ' set input 27')
+end)
+hotkey.bind("", "F17", function()
+  exec('/opt/homebrew/bin/m1ddc display ' .. display.D1 .. ' set input 17')
+end)
+hotkey.bind("shift", "F17", function()
+  exec('/opt/homebrew/bin/m1ddc display ' .. display.D2 .. ' set input 15')
+end)
+hotkey.bind("", "F18", function()
+  exec('/opt/homebrew/bin/m1ddc display ' .. display.D1 .. ' set input 18')
 end)
 
 require("streamdeck")
