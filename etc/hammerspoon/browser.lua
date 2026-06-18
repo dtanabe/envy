@@ -34,6 +34,7 @@ end
 urlevent.setDefaultHandler('http')
 urlevent.setDefaultHandler('https')
 urlevent.httpCallback = function(scheme, host, _, fullURL, senderPID)
+  -- log.f("%s", fullURL)
   for _, k in ipairs(subdomains) do
     log.f("testing %s against %s (%s)", host, k, host:sub(- #k))
 
