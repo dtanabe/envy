@@ -1,0 +1,5 @@
+[user]
+	email = gitter@pelebyte.net
+
+[core]
+    sshCommand = ssh -i ~/.ssh/github_pb_id -F /dev/null

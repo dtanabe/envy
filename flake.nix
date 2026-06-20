@@ -14,6 +14,7 @@
         packages.default = pkgs.buildEnv {
           name = "envy-profile";
           paths = with pkgs; [
+            direnv
             gh
             git
             jq

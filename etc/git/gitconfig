@@ -4,7 +4,6 @@
 
 [user]
 	name = Davin K. Tanabe
-	email = davin.tanabe@digitalasset.com
 
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
@@ -22,6 +21,7 @@
 	prompt = false
 [merge]
 	tool = Kaleidoscope
+
 [push]
 	default = simple
 
@@ -31,12 +31,6 @@
 	rebase = true
 [branch]
 	autosetuprebase = always
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean %f
